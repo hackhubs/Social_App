@@ -11,7 +11,8 @@ function Landing({ navigation }) {
       />
       <Button
         style={styles.button}
-        title="Register"
+        title="Login"
+        color="#11eebc"
         onPress={() => navigation.navigate("Login")}
       />
     </View>
