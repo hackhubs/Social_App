@@ -18,7 +18,7 @@ function Landing({ navigation }) {
       />
       <Button
         icon={<MaterialCommunityIcons name="login" size={30} color="white" />}
-        title="Login"
+        title=" Login"
         containerStyle={styles.button}
         onPress={() => navigation.navigate("Login")}
       />
@@ -28,17 +28,19 @@ function Landing({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 180,
+    marginTop: 50,
+    flex: 1,
+    backgroundColor: "white",
   },
 
   text: {
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    marginVertical: 40,
   },
   button: {
     padding: 20,
+    top: 400,
   },
 });
 

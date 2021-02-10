@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Button, Input } from "react-native-elements";
+import Octicons from "react-native-vector-icons/Octicons";
 import firebase from "firebase";
 import "firebase/auth";
 
@@ -39,29 +41,41 @@ export class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          placeholder="name"
-          style={styles.text}
+        <Input
+          leftIcon={{ type: "font-awesome", name: "user-o" }}
+          placeholder=" Name"
+          textContentType="name"
           onChangeText={(name) => this.setState({ name })}
         />
-        <TextInput
-          placeholder="email"
-          style={styles.text}
+        <Input
+          placeholder=" Email"
+          leftIcon={{ type: "MaterialCommunityIcons", name: "email" }}
+          textContentType="emailAddress"
           onChangeText={(email) => this.setState({ email })}
         />
-        <TextInput
-          placeholder="Phone number"
-          style={styles.text}
+        <Input
+          placeholder=" Phone Number"
+          leftIcon={{
+            type: "MaterialCommunityIcons",
+            name: "contacts",
+          }}
+          textContentType="telephoneNumber"
           onChangeText={(phone) => this.setState({ phone })}
         />
-
-        <TextInput
-          secureTextEntry={true}
-          placeholder="password"
-          style={styles.text}
+        <Input
+          placeholder=" Password"
+          leftIcon={{ type: "MaterialCommunityIcons", name: "lock-outline" }}
+          secureTextEntry
+          textContentType="password"
           onChangeText={(password) => this.setState({ password })}
         />
-        <Button title="Sign Up" onPress={() => this.onSignUp()} />
+
+        <Button
+          icon={<Octicons name="sign-in" size={30} color="white" />}
+          title="  Sign Up"
+          containerStyle={{ padding: 15 }}
+          onPress={() => this.onSignUp()}
+        />
       </View>
     );
   }
@@ -70,11 +84,7 @@ export class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
-  },
-  text: {
-    fontSize: 20,
-    padding: 20,
-    marginTop: 10,
+    backgroundColor: "white",
   },
 });
 

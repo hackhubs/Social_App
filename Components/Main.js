@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
+import { Button } from "react-native-elements";
+import Octicons from "react-native-vector-icons/Octicons";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { connect } from "react-redux";
@@ -30,7 +32,13 @@ export class Main extends Component {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>{currentUser.name} is logged in</Text>
-        <Button title="Log out" onPress={() => this.onSignOut()} />
+        <Text>{currentUser.email}</Text>
+        <Button
+          icon={<Octicons name="sign-out" size={30} color="white" />}
+          title=" Sign Out"
+          containerStyle={{ padding: 15 }}
+          onPress={() => this.onSignOut()}
+        />
       </View>
     );
   }

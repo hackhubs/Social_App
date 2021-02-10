@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { Button, Input } from "react-native-elements";
+import Octicons from "react-native-vector-icons/Octicons";
 import firebase from "firebase";
 import "firebase/auth";
 
@@ -30,25 +30,25 @@ export class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          placeholder="email"
+        <Input
+          placeholder=" Email"
+          leftIcon={{ type: "MaterialCommunityIcons", name: "email" }}
           textContentType="emailAddress"
-          name="email"
           onChangeText={(email) => this.setState({ email })}
-          style={styles.text}
         />
-        <TextInput
-          secureTextEntry={true}
-          placeholder="password"
+
+        <Input
+          placeholder=" Password"
+          leftIcon={{ type: "MaterialCommunityIcons", name: "lock-outline" }}
           secureTextEntry
           textContentType="password"
-          name="password"
-          style={styles.text}
           onChangeText={(password) => this.setState({ password })}
         />
+
         <Button
-          icon={<FontAwesome name="sign-in" size={30} color="white" />}
+          icon={<Octicons name="sign-in" size={30} color="white" />}
           title="  Sign In"
+          containerStyle={{ padding: 15 }}
           onPress={() => this.onSignUp()}
         />
       </View>
@@ -59,10 +59,7 @@ export class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 30,
-  },
-  text: {
-    padding: 10,
-    fontSize: 20,
+    backgroundColor: "white",
   },
 });
 
