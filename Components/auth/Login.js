@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import { Button, Input } from "react-native-elements";
 import Octicons from "react-native-vector-icons/Octicons";
 import firebase from "firebase";
@@ -28,6 +28,7 @@ export class Login extends Component {
       });
   }
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Input
@@ -51,6 +52,15 @@ export class Login extends Component {
           containerStyle={{ padding: 15 }}
           onPress={() => this.onSignUp()}
         />
+        <Text>
+          Don't have an account
+          <Text
+            style={{ color: "#788eec", fontWeight: "bold", fontSize: 16 }}
+            onPress={() => navigation.navigate("Register")}
+          >
+            Sign Up
+          </Text>
+        </Text>
       </View>
     );
   }
