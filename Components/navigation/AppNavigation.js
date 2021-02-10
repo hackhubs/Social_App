@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
-
 import firebase from "firebase/app";
 import "firebase/auth";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+
+import rootReducer from "../redux/reducers";
 import AuthNavigation from "./AuthNavigation";
+import MainScreen from "../Main";
+import AppbottomNavigation from "./AppbottomNavigation";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const firebaseConfig = {
   apiKey: "AIzaSyAzU6laCbAwQ3_LNrCffkiQOwCIRGfSRmo",
@@ -42,17 +50,7 @@ export class AppNavigation extends Component {
       }
     });
   }
-  onSignOut() {
-    firebase
-      .auth()
-      .signOut()
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+
   render() {
     const { loggedIn, loaded } = this.state;
     if (!loaded) {
@@ -68,10 +66,9 @@ export class AppNavigation extends Component {
       return <AuthNavigation />;
     }
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>User is logged in</Text>
-        <Button title="Log out" onPress={() => this.onSignOut()} />
-      </View>
+      <Provider store={store}>
+        <AppbottomNavigation />
+      </Provider>
     );
   }
 }

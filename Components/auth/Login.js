@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import firebase from "firebase";
 import "firebase/auth";
 
@@ -30,16 +32,25 @@ export class Login extends Component {
       <View style={styles.container}>
         <TextInput
           placeholder="email"
+          textContentType="emailAddress"
+          name="email"
           onChangeText={(email) => this.setState({ email })}
           style={styles.text}
         />
         <TextInput
           secureTextEntry={true}
           placeholder="password"
-          onChangeText={(password) => this.setState({ password })}
+          secureTextEntry
+          textContentType="password"
+          name="password"
           style={styles.text}
+          onChangeText={(password) => this.setState({ password })}
         />
-        <Button title="Sign In" onPress={() => this.onSignUp()} />
+        <Button
+          icon={<FontAwesome name="sign-in" size={30} color="white" />}
+          title="  Sign In"
+          onPress={() => this.onSignUp()}
+        />
       </View>
     );
   }
@@ -51,7 +62,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 10,
-    fontsize: 20,
+    fontSize: 20,
   },
 });
 

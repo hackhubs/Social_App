@@ -8,6 +8,7 @@ export class Register extends Component {
     super(props);
     this.state = {
       name: "",
+      phone: "",
       email: "",
       password: "",
     };
@@ -15,7 +16,7 @@ export class Register extends Component {
   }
 
   onSignUp() {
-    const { name, email, password } = this.state;
+    const { name, email, password, phone } = this.state;
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -26,6 +27,7 @@ export class Register extends Component {
           .doc(firebase.auth().currentUser.uid)
           .set({
             name,
+            phone,
             email,
           });
         console.log(result);
@@ -48,6 +50,12 @@ export class Register extends Component {
           onChangeText={(email) => this.setState({ email })}
         />
         <TextInput
+          placeholder="Phone number"
+          style={styles.text}
+          onChangeText={(phone) => this.setState({ phone })}
+        />
+
+        <TextInput
           secureTextEntry={true}
           placeholder="password"
           style={styles.text}
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   text: {
-    fontsize: 20,
+    fontSize: 20,
     padding: 20,
     marginTop: 10,
   },

@@ -1,21 +1,25 @@
 import React from "react";
-import { View, StyleSheet, Button, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Button, Text } from "react-native-elements";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 function Landing({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Welcome to Our App</Text>
+      <Text h2Style={styles.text} h2>
+        Welcome to our App
+      </Text>
       <Button
-        style={styles.button}
+        icon={<MaterialCommunityIcons name="account" size={30} color="white" />}
         title="Register"
-        style={styles.button}
+        containerStyle={styles.button}
+        buttonStyle={{ backgroundColor: "#18e761" }}
         onPress={() => navigation.navigate("Register")}
       />
       <Button
-        style={styles.button}
+        icon={<MaterialCommunityIcons name="login" size={30} color="white" />}
         title="Login"
-        color="#11eebc"
-        style={styles.button}
+        containerStyle={styles.button}
         onPress={() => navigation.navigate("Login")}
       />
     </View>
@@ -24,19 +28,16 @@ function Landing({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 20,
-    margin: 10,
+    marginTop: 180,
   },
-  button: {
-    padding: 10,
-    marginTop: 10,
-  },
+
   text: {
-    fontsize: 20,
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
+    marginVertical: 40,
+  },
+  button: {
     padding: 20,
   },
 });
