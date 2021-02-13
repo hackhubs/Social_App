@@ -31,7 +31,7 @@ export class Main extends Component {
     }
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>{currentUser.name} is logged in</Text>
+        <Text>{currentUser.name} Welcome to our App.</Text>
         <Text>{currentUser.email}</Text>
         <Button
           icon={<Octicons name="sign-out" size={30} color="white" />}
