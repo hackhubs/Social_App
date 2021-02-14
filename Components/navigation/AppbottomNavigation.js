@@ -5,6 +5,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import Main from "../Main";
 import feed from "../screen/feed";
+import AddImage from "../screen/AddImage";
+import Profile from "../screen/Profile";
 
 const Tab = createBottomTabNavigator();
 function AppbottomNavigation(props) {
@@ -13,6 +15,7 @@ function AppbottomNavigation(props) {
       <Tab.Navigator
         initialRouteName="Home"
         tabBarOptions={{
+          inactiveTintColor: "black",
           activeTintColor: "#e91e63",
         }}
       >
@@ -30,10 +33,38 @@ function AppbottomNavigation(props) {
           name="Feed"
           component={feed}
           options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "Feed",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="image-search"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Add"
+          component={AddImage}
+          options={{
+            tabBarLabel: "Image",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="plus-box"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            tabBarLabel: "Profile",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account-circle-outline"
                 color={color}
                 size={size}
               />
