@@ -1,46 +1,19 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import { Button } from "react-native-elements";
-import Octicons from "react-native-vector-icons/Octicons";
-import firebase from "firebase/app";
+
 import "firebase/auth";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUser } from "./redux/actions";
+import AppbottomNavigation from "./navigation/AppbottomNavigation";
 
 export class Main extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
-  onSignOut() {
-    firebase
-      .auth()
-      .signOut()
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  render() {
-    const { currentUser } = this.props;
 
-    if (currentUser === undefined) {
-      return <View></View>;
-    }
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>{currentUser.name} Welcome to our App.</Text>
-        <Text>{currentUser.email}</Text>
-        <Button
-          icon={<Octicons name="sign-out" size={30} color="white" />}
-          title=" Sign Out"
-          containerStyle={{ padding: 15 }}
-          onPress={() => this.onSignOut()}
-        />
-      </View>
-    );
+  render() {
+    return <AppbottomNavigation />;
   }
 }
 

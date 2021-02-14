@@ -1,51 +1,48 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Main from "../Main";
 import feed from "../screen/feed";
 import AddImage from "../screen/AddImage";
 import Profile from "../screen/Profile";
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
+
+const EmptyScreen = () => {
+  return null;
+};
+
 function AppbottomNavigation(props) {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Profile"
         tabBarOptions={{
           inactiveTintColor: "black",
           activeTintColor: "#e91e63",
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={Main}
+          name="Feed"
+          component={feed}
           options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "Feed",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),
           }}
         />
         <Tab.Screen
-          name="Feed"
-          component={feed}
-          options={{
-            tabBarLabel: "Feed",
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="image-search"
-                color={color}
-                size={size}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Add"
-          component={AddImage}
+          name="AddContainer"
+          listeners={({ navigation }) => ({
+            tabPress: (event) => {
+              event.preventDefault();
+              navigation.navigate("Add");
+            },
+          })}
+          component={EmptyScreen}
           options={{
             tabBarLabel: "Image",
             tabBarIcon: ({ color, size }) => (

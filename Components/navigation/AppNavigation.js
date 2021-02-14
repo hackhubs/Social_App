@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 import rootReducer from "../redux/reducers";
 import AuthNavigation from "./AuthNavigation";
 import MainScreen from "../Main";
-import AppbottomNavigation from "./AppbottomNavigation";
+import FeedNavigation from "./FeedNavigation";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -67,7 +67,7 @@ export class AppNavigation extends Component {
     }
     return (
       <Provider store={store}>
-        <AppbottomNavigation />
+        <FeedNavigation />
       </Provider>
     );
   }

@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 function feed(props) {
   return (
     <View style={styles.container}>
-      <Text>Feed scree</Text>
+      <Text>Feed screen</Text>
     </View>
   );
 }
