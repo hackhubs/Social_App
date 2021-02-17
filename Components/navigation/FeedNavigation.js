@@ -10,12 +10,13 @@ const Stack = createStackNavigator();
 function FeedNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
           name="Main"
           component={Main}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen name="Add" component={AddImage} />
       </Stack.Navigator>
     </NavigationContainer>
