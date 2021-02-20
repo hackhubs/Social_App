@@ -13,7 +13,7 @@ const EmptyScreen = () => {
   return null;
 };
 
-function AppbottomNavigation(props) {
+function AppbottomNavigation() {
   return (
     <Tab.Navigator
       initialRouteName="Profile"
