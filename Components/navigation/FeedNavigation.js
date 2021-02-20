@@ -19,7 +19,11 @@ function FeedNavigation() {
         />
 
         <Stack.Screen name="Add" component={AddImage} />
-        <Stack.Screen name="Save" component={Save} />
+        <Stack.Screen
+          name="Save"
+          component={Save}
+          // navigation={this.props.navigation}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
