@@ -16,7 +16,7 @@ const EmptyScreen = () => {
 function AppbottomNavigation() {
   return (
     <Tab.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Feed"
       tabBarOptions={{
         inactiveTintColor: "black",
         activeTintColor: "#e91e63",

@@ -31,7 +31,7 @@ function Save(props) {
 
     const taskCompleted = () => {
       task.snapshot.ref.getDownloadURL().then((snapshot) => {
-        //to get the download url which is public available to show the image uploaded
+        savePostData(snapshot); //to get the download url which is public available to show the image uploaded
         console.log(snapshot);
       });
     };
@@ -42,6 +42,22 @@ function Save(props) {
     };
 
     task.on("state_change", taskProgress, taskError, taskCompleted); // This should be called in proper order i.e progress => error => completed when the state changes these tasks get activated
+  };
+
+  const savePostData = (downloadURl) => {
+    firebase
+      .firestore()
+      .collection("posts")
+      .doc(firebase.auth().currentUser.uid)
+      .collection("userPosts")
+      .add({
+        downloadURl,
+        caption,
+        creation: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(function () {
+        props.navigation.popToTop();
+      });
   };
 
   return (
