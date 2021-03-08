@@ -6,6 +6,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import feed from "../screen/feed";
 import Profile from "../screen/Profile";
+import Search from "../screen/Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +38,21 @@ function AppbottomNavigation() {
           ),
         }}
       />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarLabel: "Search",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="account-search-outline"
+              color={color}
+              size={30}
+            />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="AddContainer"
         component={EmptyScreen}
