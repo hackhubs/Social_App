@@ -28,6 +28,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Now we can save images and view image"
+    "description": "Now we can save images and view image with follow option"
   }
 }
