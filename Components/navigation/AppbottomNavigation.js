@@ -1,7 +1,8 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import firebase from "firebase/app";
+import "firebase/auth";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import feed from "../screen/feed";
@@ -84,6 +85,14 @@ function AppbottomNavigation() {
             />
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (event) => {
+            event.preventDefault();
+            navigation.navigate("Profile", {
+              uid: firebase.auth().currentUser.uid,
+            });
+          },
+        })}
       />
     </Tab.Navigator>
   );

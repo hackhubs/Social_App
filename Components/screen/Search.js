@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput, FlatList, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  FlatList,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { SearchBar } from "react-native-elements";
@@ -33,7 +40,15 @@ function Search(props) {
         numColumns={1}
         horizontal={false}
         data={users}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate("Profile", { uid: item.id })
+            }
+          >
+            <Text>{item.name}</Text>
+          </TouchableOpacity>
+        )}
       />
     </View>
   );

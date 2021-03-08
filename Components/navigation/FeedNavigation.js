@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Main from "../Main";
 import AddImage from "../screen/AddImage";
 import Save from "../screen/Save";
+import Profile from "../screen/Profile";
 
 const Stack = createStackNavigator();
 
